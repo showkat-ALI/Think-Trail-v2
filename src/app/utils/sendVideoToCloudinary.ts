@@ -9,7 +9,7 @@ cloudinary.config({
   timeout: 120000, // 120 seconds
 });
 
-export const sendImageToCloudinary = (
+export const sendVideoToCloudinary = (
   fileName: string,
   path: string,
 ): Promise<Record<string, unknown>> => {
@@ -18,7 +18,7 @@ export const sendImageToCloudinary = (
       path,
       {
         public_id: fileName.trim(),
-        resource_type: 'image', // Use the correct resource type
+        resource_type: 'video', // Use the correct resource type
         chunk_size: 30000000, // 30 MB
         upload_preset: 'showkat', // Add your preset name here
       },
@@ -46,4 +46,4 @@ const storage = multer.diskStorage({
   },
 });
 
-export const upload = multer({ storage: storage });
+export const uploadvideo = multer({ storage: storage });

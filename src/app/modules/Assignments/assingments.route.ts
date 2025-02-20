@@ -7,6 +7,7 @@ import validateRequest from '../../middlewares/validateRequest';
 // import { minioUpload } from '../../minio-config/minioConfig';
 import { upload } from '../../utils/sendImageToCloudinary';
 // import { CourseValidations } from './assingments.validation';
+import { uploadvideo } from './../../utils/sendVideoToCloudinary';
 
 const router = express.Router();
 
@@ -18,6 +19,15 @@ router.post(
   
   // validateRequest(CourseValidations.createCourseValidationSchema),
   AssignmentControllers.uploadFile,
+);
+router.post(
+  '/upload/upload-any-Video',
+  auth(['admin', 'superAdmin']),
+  // minioUpload.single('file'),
+  uploadvideo.single('file'),
+  
+  // validateRequest(CourseValidations.createCourseValidationSchema),
+  AssignmentControllers.uploadModuleVideo,
 );
 router.post(
   '/create-assignment',

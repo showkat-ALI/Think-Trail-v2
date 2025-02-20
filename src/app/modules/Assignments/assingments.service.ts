@@ -8,6 +8,7 @@ import { Assignment } from './assignments.model';
 // import { minioClient } from '../../minio-config/minioConfig';
 import { sendImageToCloudinary } from '../../utils/sendImageToCloudinary';
 import { v4 as uuidv4 } from 'uuid';
+import { sendVideoToCloudinary } from '../../utils/sendVideoToCloudinary';
 
 const createAssignmentFileIntoDB = async (file: any) => {
   try {
@@ -17,6 +18,23 @@ const createAssignmentFileIntoDB = async (file: any) => {
 
       //send file to cloudinary
       const { secure_url } = await sendImageToCloudinary(fileName, path);
+      return secure_url;
+    }
+  } catch (error) {
+    throw new AppError(
+      httpStatus.INTERNAL_SERVER_ERROR,
+      'Error uploading file to Cloudinary',
+    );
+  }
+};
+const createModuleVideoIntoDB = async (file: any) => {
+  try {
+    if (file) {
+      const fileName = uuidv4();
+      const path = file?.path;
+
+      //send file to cloudinary
+      const { secure_url } = await sendVideoToCloudinary(fileName, path);
       return secure_url;
     }
   } catch (error) {
@@ -66,4 +84,5 @@ export const AssignmentServices = {
   createAssignmentFileIntoDB,
   createAssignmentIntoDB,
   getAllAssignementsByInstructorfromDB,
+  createModuleVideoIntoDB
 };

@@ -10,7 +10,6 @@ const createCourseIntoDB = async (payload: TCourse) => {
     const result = await Module.create(payload);
     return result;
   } catch (error) {
-    console.log(error);
     throw new AppError(httpStatus.BAD_REQUEST, 'Error creating course');
   }
 };

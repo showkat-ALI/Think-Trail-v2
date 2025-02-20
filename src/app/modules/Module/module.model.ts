@@ -21,6 +21,10 @@ const courseSchema = new Schema<TCourse>({
     type: Schema.Types.ObjectId,
     ref: 'Videos',
   },
+  isDeleted:{
+    type:Boolean,
+    byDefault:false
+  }
 });
 
 export const Module = model<TCourse>('Module', courseSchema);

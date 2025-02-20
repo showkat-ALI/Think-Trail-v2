@@ -7,10 +7,16 @@ import { Course } from './course.model';
 
 const createCourseIntoDB = async (payload: TCourse) => {
   try {
+    // Check the number of courses created by the user
+    const courseCount = await Course.countDocuments({ createdBy: payload.createdBy });
+    if (courseCount >= 2) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Maximum course creation limit exceeded');
+    }
+
+    // Create the course if the limit is not exceeded
     const result = await Course.create(payload);
     return result;
   } catch (error) {
-    console.log(error);
     throw new AppError(httpStatus.BAD_REQUEST, 'Error creating course');
   }
 };

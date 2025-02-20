@@ -12,6 +12,15 @@ const uploadFile = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const uploadModuleVideo = catchAsync(async (req, res) => {
+  const result = await AssignmentServices.createModuleVideoIntoDB(req.file);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'File uploaded successfully',
+    data: result,
+  });
+});
 const createAssignment = catchAsync(async (req, res) => {
   const result = await AssignmentServices.createAssignmentIntoDB(req);
   sendResponse(res, {
@@ -36,4 +45,5 @@ export const AssignmentControllers = {
   uploadFile,
   createAssignment,
   getAssignmentsByInstructor,
+  uploadModuleVideo
 };

@@ -11,6 +11,7 @@ export type TCourse = {
   slides: Types.ObjectId;
   videos: Types.ObjectId;
   quizzes: Types.ObjectId;
+  isDeleted:boolean
 };
 
 export type TCoursefaculty = {

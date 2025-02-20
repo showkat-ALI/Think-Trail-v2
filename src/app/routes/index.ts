@@ -15,6 +15,7 @@ import { UserRoutes } from '../modules/user/user.route';
 import { AssignmentRoutes } from '../modules/Assignments/assingments.route';
 import { QuizRoutes } from '../modules/Quiz/quiz.route';
 import { ModuleRouters } from '../modules/Module/module.route';
+import { ModuleVideoRoutes } from '../modules/ModuleVideo/module.route';
 
 const router = Router();
 
@@ -78,6 +79,10 @@ const moduleRoutes = [
   {
     path: '/quiz',
     route: QuizRoutes,
+  },
+  {
+    path: '/module-video',
+    route: ModuleVideoRoutes,
   },
 ];
 

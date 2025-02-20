@@ -25,4 +25,4 @@ router.get(
 //   CourseControllers.getAllCourses,
 // );
 
-export const ModuleRouters = router;
+export const ModuleVideoRoutes = router;
