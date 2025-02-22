@@ -6,7 +6,7 @@ cloudinary.config({
   cloud_name: config.cloudinary_cloud_name,
   api_key: config.cloudinary_api_key,
   api_secret: config.cloudinary_api_secret,
-  timeout: 120000, // 120 seconds
+  timeout: 0, // 180 seconds
 });
 
 export const sendVideoToCloudinary = (
@@ -19,7 +19,7 @@ export const sendVideoToCloudinary = (
       {
         public_id: fileName.trim(),
         resource_type: 'video', // Use the correct resource type
-        chunk_size: 30000000, // 30 MB
+        chunk_size: 60000000, // 30 MB
         upload_preset: 'showkat', // Add your preset name here
       },
       (error, result) => {

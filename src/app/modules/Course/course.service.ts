@@ -9,7 +9,7 @@ const createCourseIntoDB = async (payload: TCourse) => {
   try {
     // Check the number of courses created by the user
     const courseCount = await Course.countDocuments({ createdBy: payload.createdBy });
-    if (courseCount >= 2) {
+    if (courseCount >= 5) {
       throw new AppError(httpStatus.BAD_REQUEST, 'Maximum course creation limit exceeded');
     }
 

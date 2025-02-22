@@ -4,6 +4,7 @@ import AppError from '../../errors/AppError';
 // import { CourseSearchableFields } from './Module.constant';
 import {  ModuleVideo } from './module.model';
 import { TModuleVideo } from './module.interface';
+import { Module } from '../Module/module.model';
 
 const createCourseIntoDB = async (payload: TModuleVideo) => {
   try {
